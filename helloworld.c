@@ -186,7 +186,7 @@ extern void xil_printf(const char *format, ...);
 /*
  * Buffer and Buffer Descriptor related constant definition
  */
-#define MAX_PKT_LEN		0x40
+#define MAX_PKT_LEN		0x20
 #define MARK_UNCACHEABLE        0x701
 
 /*
@@ -295,6 +295,7 @@ int main(void)
 
 
 	unsigned char Data_temp[MAX_PKT_LEN * NUMBER_OF_BDS_TO_TRANSFER];
+	unsigned char Output[MAX_PKT_LEN * NUMBER_OF_BDS_TO_TRANSFER];
 	uint32_t com_file_len = MAX_PKT_LEN * NUMBER_OF_BDS_TO_TRANSFER;
 
 
@@ -361,6 +362,8 @@ int main(void)
 		xil_printf("Device configured as Simple mode \r\n");
 		return XST_FAILURE;
 	}
+
+	printf("sb coming\n");
 
 	/* Set up TX/RX channels to be ready to transmit and receive packets */
 	Status = TxSetup(&AxiDma);
